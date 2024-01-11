@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 from fastiecm import fastiecm
 
-original = cv2.imread('/home/Luu/3.jpg')
+original = cv2.imread('/home/user/example.jpg')
 
 def display(image, image_name):
     image = np.array(image, dtype=float)/float(255)
