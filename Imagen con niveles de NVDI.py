@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from fastiecm import fastiecm
 
+#Usar su imagen a eleccion, por favor ingrese la ruta entre ()
 original = cv2.imread('/home/user/example.jpg')
 
 def display(image, image_name):
@@ -34,14 +35,20 @@ def calc_ndvi(image):
 
 display(original, 'Original')
 contrasted = contrast_stretch(original)
+
 display(contrasted, 'Contrasted original')
 cv2.imwrite('contrasted.png', contrasted)
+
 ndvi = calc_ndvi(contrasted)
+
 display(ndvi, 'NDVI')
 ndvi_contrasted = contrast_stretch(ndvi)
+
 display(ndvi_contrasted, 'NDVI Contrasted')
 cv2.imwrite('ndvi_contrasted.png', ndvi_contrasted)
+
 color_mapped_prep = ndvi_contrasted.astype(np.uint8)
 color_mapped_image = cv2.applyColorMap(color_mapped_prep, fastiecm)
+
 display(color_mapped_image, 'Color mapped')
 cv2.imwrite('color_mapped_image.png', color_mapped_image)
